@@ -93,7 +93,7 @@
             <td>{{ $item->tipe }}</td>
             <td>{{ $item->deskripsi }}</td>
             <td>{{ $item->harga }}</td>
-            <td>{{ $item->image }}</td>
+            <td>{{ $item->foto }}</td>
             <td>
                 <a href="{{ route('laptop.edit', $item->id) }}" class="btn btn-primary">Edit</a>
                 <form action="{{ route('laptop.destroy',$item->id) }}" method="POST" class="d-inline">

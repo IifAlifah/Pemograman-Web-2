@@ -90,8 +90,8 @@
                                     <input type="text" class="form-control" id="harga_input" name="hargaInput" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="image" class="form-label">Post Gambar</label>
-                                    <input class="form-control" type="file" id="image" name="image" required>
+                                    <label for="foto" class="form-label">Post Gambar</label>
+                                    <input class="form-control" type="file" id="foto" name="foto" required>
                                   </div>
                                 
                                 <div class="row mx-2">

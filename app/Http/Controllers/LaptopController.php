@@ -40,11 +40,11 @@ class LaptopController extends Controller
             'tipe' => 'required',
             'deskripsi' => 'required',
             'harga' => 'required', 
-            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg',
+            'foto' => 'required|image'
         ]);
 
-        if($request->file('image')){
-            $validatedData['image']=$request->file('image')->store('post-images');
+        if($request->file('foto')){
+            $validatedData['foto']=$request->file('foto')->store('post-images');
         }
         Laptop::create($validatedData);
         return redirect()-route('laptop');
