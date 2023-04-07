@@ -72,7 +72,7 @@
                 <div class="container ">
                     <div class="row justify-content-center">
                         <div class="col-md-5 border rounded mt-2">
-                            <form action="{{ route('laptop.update', $laptop->id) }}" method="POST">
+                            <form action="{{ route('laptop.update', $laptop->id) }}" method="POST" enctype="multipart/form-data">
                                 @method('put')
                                 @csrf
                         
@@ -92,7 +92,16 @@
                                     <label for="harga_input" class="form-label">Harga</label>
                                     <input type="text" class="form-control" id="harga_input" name="hargaInput" value="{{ $laptop->harga }}">
                                 </div>
-                                
+                                <div class="mb-3">
+                                  <label for="image" class="form-label">Post Gambar</label>
+                                  <input type="hidden" name="oldImage" value="{{$laptop->image}}">
+                                  @if($laptop->image)
+                                  <img src="{{asset('storage/'. $laptop->image)}}" class="img-preview img-fluid mb-3 d-block">
+                                  @else
+                                  <img class="img-preview img-fluid mb-3">
+                                  @endif
+                                  <input class="form-control" type="file" id="image" name="image" onchange="previewImage()" required>
+                                </div>
                                 <div class="row mx-2">
                                     <button type="submit" class="btn btn-primary mb-3">Edit</button>
                                 </div>
@@ -112,6 +121,22 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
   <script src="js/dashboard.js"></script>
+  <script>
+    function previewImage() {
+      const image = document.querySelector('#image');
+      const imgPreview = document.querySelector('.img-preview');
+
+      imgPreview.style.display = 'block';
+
+      const oFReader = new FileReader();
+      oFReader.readAsDataURL(image.files[0]);
+      oFReader.onload = function(oFREvent){
+        imgPreview.src = oFREvent.target.result;
+      }
+    }
+   
+
+  </script>
   </body>
 </html>
 

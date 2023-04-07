@@ -93,7 +93,7 @@
             <td>{{ $item->tipe }}</td>
             <td>{{ $item->deskripsi }}</td>
             <td>{{ $item->harga }}</td>
-            <td>{{ $item->foto }}</td>
+            <td><center> <img src="{{ asset('storage/'. $item->image) }}" alt="" style="width: 100px"></center></td>
             <td>
                 <a href="{{ route('laptop.edit', $item->id) }}" class="btn btn-primary">Edit</a>
                 <form action="{{ route('laptop.destroy',$item->id) }}" method="POST" class="d-inline">

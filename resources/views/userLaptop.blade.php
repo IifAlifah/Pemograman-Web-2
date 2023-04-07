@@ -52,7 +52,7 @@
           <li class="nav-item">
             @can('admin')
             <a class="nav-link" href="{{ route('dashboard.showDataPengguna') }}">
-              <span data-feather="shopping-cart" class="align-text-bottom"></span>
+              <span data-feather="file" class="align-text-bottom"></span>
               Data Pengguna
             </a>
             @endcan
@@ -72,15 +72,16 @@
             <div class="col">
                 <h1>Selamat Datang, {{ Auth::user()->name }}</h1>
             </div>
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" style="min-height: 200px">
                 @foreach ($laptop as $item )
                 <div class="col">
-                    <div class="card shadow-sm">
-                        <div class="card-body">
-                            <p style="text-align: center; font-size:20px">{{$item->merk}}</p>
-                            <img src="" alt="">
+                    <div class="card shadow-sm " >
+                        <div class="card-body h-200" >
+                            <p style="text-align: center; font-size:20px; font-weight:700">{{$item->merk}}</p>
+                            <center><img src="{{asset('storage/'. $item->image)}}" alt="" style="width:200px"></center>
+                            <br>
                             <p>Tipe  : {{$item->tipe}}</p>
-                            <p>{{$item->deskripsi}}</p>
+                            <p style="text-align: justify">{{$item->deskripsi}}</p>
                             <p>Harga :{{$item->harga}}</p>
                         </div>  
                         

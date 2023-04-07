@@ -54,7 +54,7 @@ class DashboardController extends Controller
         $namaInput = $request->input('namaInput');
         $emailInput = $request->input('emailInput');
         $passwordInput = Hash::make($request->input('passwordInput')) ;
-        $is_admin = $request->input('is_adminInput');
+        $is_adminInput = $request->input('is_adminInput');
 
         // dd($request->input(''));
 
@@ -62,7 +62,7 @@ class DashboardController extends Controller
             'name' => $namaInput,
             'email' => $emailInput,
             'password' => $passwordInput,
-            'is_admin' => $is_adminInput
+            'is_admin' => $is_adminInput,
         ]);
 
         if ($query) {
@@ -109,7 +109,7 @@ class DashboardController extends Controller
         $namaInput = $request->input('namaInput');
         $emailInput = $request->input('emailInput');
         $passwordInput = Hash::make($request->input('passwordInput'));
-        $is_admin = $request->input('is_adminInput');
+        $is_adminInput = $request->input('is_adminInput');
 
         $query = DB::table('users')->where('id', $id)->update([
             'name' => $namaInput,

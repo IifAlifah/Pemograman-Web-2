@@ -6,6 +6,8 @@ use App\Models\Laptop;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 
 class LaptopController extends Controller
@@ -35,39 +37,38 @@ class LaptopController extends Controller
      */
     public function store(Request $request)
     {
+        
         $validatedData = $request->validate([
             'merkInput' => 'required',
-            'tipe' => 'required',
-            'deskripsi' => 'required',
-            'harga' => 'required', 
-            'foto' => 'required|image'
+            'tipeInput' => 'required',
+            'deskripsiInput' => 'required',
+            'hargaInput' => 'required', 
+            'image' => 'required|image|mimes:png,jpg'
         ]);
 
-        if($request->file('foto')){
-            $validatedData['foto']=$request->file('foto')->store('post-images');
+        if($request->file('image')){
+            $validatedData['image']=$request->file('image')->store('public/app/images');
         }
-        Laptop::create($validatedData);
-        return redirect()-route('laptop');
-       
-        // $merkInput = $request->input('merkInput');
-        // $tipeInput = $request->input('tipeInput');
-        // $deskripsiInput = $request->input('deskripsiInput');
-        // $hargaInput = $request->input('hargaInput');
-        // $image = $request->file('image')->store('post-images');
+        
+        $merkInput = $request->input('merkInput');
+        $tipeInput = $request->input('tipeInput');
+        $deskripsiInput = $request->input('deskripsiInput');
+        $hargaInput = $request->input('hargaInput');
+        $image = $request->file('image')->store('images');
 
-        // $query = DB::table('laptop')->insert([
-        //     'merk' => $merkInput,
-        //     'tipe' => $tipeInput,
-        //     'deskripsi' => $deskripsiInput,
-        //     'harga' => $hargaInput, 
-        //     'image' => $image
-        // ]);
+        $query = DB::table('laptop')->insert([
+            'merk' => $merkInput,
+            'tipe' => $tipeInput,
+            'deskripsi' => $deskripsiInput,
+            'harga' => $hargaInput, 
+            'image' => $image
+        ]);
 
-        // if ($query) {
-        //     return redirect()->route('laptop');
-        // } else {
-        //     return redirect()->route('laptop');
-        // }
+        if ($query) {
+            return redirect()->route('laptop');
+        } else {
+            return redirect()->route('laptop');
+        }
 
     }
 
@@ -94,22 +95,40 @@ class LaptopController extends Controller
      */
     public function update(Request $request, $id)
     {
+         $rules = [
+            'merkInput' => 'required',
+            'tipeInput' => 'required',
+            'deskripsiInput' => 'required',
+            'hargaInput' => 'required', 
+            'image' => 'required|image|mimes:png,jpg,jpeg'
+         ];
+
+         $validatedData = $request->validate($rules);
+
+        if($request->file('image')){
+            if($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $validatedData['image']=$request->file('image')->store('public/app/images');
+        }
+
         $merkInput = $request->input('merkInput');
         $tipeInput = $request->input('tipeInput');
         $deskripsiInput = $request->input('deskripsiInput');
         $hargaInput = $request->input('hargaInput');
+        $image = $request->file('image')->store('images');
 
         $query = DB::table('laptop')->where('id', $id)->update([
             'merk' => $merkInput,
             'tipe' => $tipeInput,
             'deskripsi' => $deskripsiInput,
-            'harga' => $hargaInput
+            'harga' => $hargaInput,
+            'image' => $image
         ]);
-
         if ($query) {
-            return redirect()->route('laptop.index');
+            return redirect()->route('laptop');
         } else {
-            return redirect()->route('laptop.index');
+            return redirect()->route('laptop');
         }
 
     }
@@ -122,6 +141,7 @@ class LaptopController extends Controller
      */
     public function destroy($id)
     {
+
         $query = DB::table('laptop')->where('id', $id)->delete();
 
         if ($query) {
