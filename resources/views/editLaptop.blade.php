@@ -39,19 +39,19 @@
           </li>
           <li class="nav-item">
             <a class="nav-link {{Request::is('dashboard')? 'active': ''}}" href="{{ route('dashboard.showUserLaptop') }}">
-              <span data-feather="file" class="align-text-bottom"></span>
+              <span data-feather="monitor" class="align-text-bottom"></span>
               Laptop Rekomendasi
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link {{Request::is('dashboard')? 'active': ''}}" href="{{ route('laptop') }}">
-              <span data-feather="file" class="align-text-bottom"></span>
+              <span data-feather="archive" class="align-text-bottom"></span>
               Data Laptop
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link {{Request::is('dashboard')? 'active': ''}}" href="{{ route('dashboard.showDataPengguna') }}">
-              <span data-feather="shopping-cart" class="align-text-bottom"></span>
+              <span data-feather="users" class="align-text-bottom"></span>
               Data Pengguna
             </a>
           </li>

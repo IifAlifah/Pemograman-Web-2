@@ -39,19 +39,19 @@
           </li>
           <li class="nav-item">
             <a class="nav-link {{Request::is('dashboard')? 'active': ''}}" href="{{ route('dashboard.showUserLaptop') }}">
-              <span data-feather="file" class="align-text-bottom"></span>
+              <span data-feather="monitor" class="align-text-bottom"></span>
               Laptop Rekomendasi
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link {{Request::is('dashboard')? 'active': ''}}" href="{{ route('laptop') }}">
-              <span data-feather="file" class="align-text-bottom"></span>
+              <span data-feather="archive" class="align-text-bottom"></span>
               Data Laptop
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link {{Request::is('dashboard')? 'active': ''}}" href="{{ route('dashboard.showDataPengguna') }}">
-              <span data-feather="file" class="align-text-bottom"></span>
+              <span data-feather="users" class="align-text-bottom"></span>
               Data Pengguna
             </a>
           </li>
@@ -95,11 +95,11 @@
             <td>{{ $item->harga }}</td>
             <td><center> <img src="{{ asset('storage/'. $item->image) }}" alt="" style="width: 100px"></center></td>
             <td>
-                <a href="{{ route('laptop.edit', $item->id) }}" class="btn btn-primary">Edit</a>
+                <a href="{{ route('laptop.edit', $item->id) }}" class="btn btn-primary btn-sm text-right">Edit</a>
                 <form action="{{ route('laptop.destroy',$item->id) }}" method="POST" class="d-inline">
                     @csrf
                     @method('DELETE')
-                    <button class="btn btn-danger" onclick="confirm('Anda yakin akan meenghapus data ini?')">Hapus</button>
+                    <button class="btn btn-danger btn-sm text-right" onclick="confirm('Anda yakin akan meenghapus data ini?')">Hapus</button>
                </form>
             </td>
         </tr>
