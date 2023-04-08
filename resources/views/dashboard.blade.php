@@ -71,7 +71,6 @@
         <div class="row">
             <div class="col">
                 <h2>Selamat Datang, {{ Auth::user()->name }}</h2>
-                <h3>Ini adalah halaman Dashboard</h3>
             </div>
             <p style="text-align: justify">Laptop merupakan salah satu perlengkapan elektronik yang fungsinya sangat penting untuk menunjang aktivitas belajar, khususnya bagi mahasiswa. Selain untuk menyusun laporan, laptop juga digunakan untuk mengolah data, presentasi, hingga membuat karya seni.<br><br>
               Memilih laptop untuk mahasiswa gampang-gampang sulit untuk dilakukan. Apalagi biasanya mereka menginginkan laptop yang multifungsi. Akan tetapi, kebanyakan mahasiswa akan terbentur dengan bujet yang diberikan oleh orang tua. Kegiatan memilih laptop pun menjadi tantangan.<br>
