@@ -37,14 +37,14 @@
           </li>
           <li class="nav-item">
             <a class="nav-link {{Request::is('dashboard')? 'active': ''}}" href="{{ route('dashboard.showUserLaptop') }}">
-              <span data-feather="file" class="align-text-bottom"></span>
+              <span data-feather="monitor" class="align-text-bottom"></span>
               Laptop Rekomendasi
             </a>
           </li>
           <li class="nav-item">
             @can('admin')
             <a class="nav-link" href="{{ route('laptop') }}">
-              <span data-feather="file" class="align-text-bottom"></span>
+              <span data-feather="archive" class="align-text-bottom"></span>
               Data Laptop
             </a>
             @endcan
@@ -52,7 +52,7 @@
           <li class="nav-item">
             @can('admin')
             <a class="nav-link" href="{{ route('dashboard.showDataPengguna') }}">
-              <span data-feather="file" class="align-text-bottom"></span>
+              <span data-feather="users" class="align-text-bottom"></span>
               Data Pengguna
             </a>
             @endcan
